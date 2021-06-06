@@ -1,6 +1,6 @@
 package com.practiceProgram;
 
-public class SearchUC7 {
+public class AfterInsertUC8 {
 
 	public Node head = null;
 	public Node tail = null;
@@ -42,20 +42,22 @@ public class SearchUC7 {
 		}
 		else {
 			tail.next = newNode;
+			tail = newNode;
 
 		}
 	}
-
-	public boolean search(Node head, int x) {
-		if(head == null)
-		return false;
-
-		if(head.data == x)
-			return true;
+	
+	public void insertAfter(Node prev_node, int data) {
+		if (head == null) {
+			System.out.println("The given node previous can't null");
+		return;
+		}
+		Node newNode= new Node (data);
+		newNode.next = prev_node.next;
+		prev_node.next = newNode;
 		
-		return search(head.next,x);
 	}
-
+	
 	public void display() {
 		Node tempNode = head;
 		Node current = head;
@@ -73,21 +75,14 @@ public class SearchUC7 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		SearchUC7 list = new SearchUC7();
+		AfterInsertUC8 list = new AfterInsertUC8();
 
 		list.addNode(56);
 		list.addNode(30);
 		list.addNode(70);
 
-		list.display();
-
+		list.insertAfter(list.head.next,40);
 		
-         
-		if (list.search(list.head, 30))
-            System.out.println("Yes");
-        else
-            System.out.println("No");
+		list.display();
 	}
-
-	
 }

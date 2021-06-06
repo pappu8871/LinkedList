@@ -1,15 +1,15 @@
 package com.practiceProgram;
 
-public class DeleteLastUC6 {
+public class SearchUC7 {
 
-	public  Node head = null;
+	public Node head = null;
 	public Node tail = null;
 
 	class Node {
 		int data;
 		Node next;
 
-		public Node(int data) {
+		 Node(int data) {
 			this.data = data;
 			this.next = null;
 		}
@@ -29,6 +29,7 @@ public class DeleteLastUC6 {
 		public void setNext(Node next) {
 			this.next = next;
 		}
+
 	}
 
 
@@ -41,22 +42,19 @@ public class DeleteLastUC6 {
 		}
 		else {
 			tail.next = newNode;
-			tail = newNode;
 
 		}
 	}
 
-	public Node DeletLastNode() {
-		if (head == null || head.next == null) {
-		return null;
+	public boolean search(Node head, int x) {
+		if(head == null)
+		return false;
+
+		if(head.data == x)
+			return true;
+		
+		return search(head.next,x);
 	}
-		Node secondlast = head;
-		while (secondlast.next.next != null) 
-			secondlast = secondlast.next;
-			secondlast.next = null;
-			return head;
-		}
-	
 
 	public void display() {
 		Node tempNode = head;
@@ -75,7 +73,7 @@ public class DeleteLastUC6 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		DeleteLastUC6 list = new DeleteLastUC6();
+		SearchUC7 list = new SearchUC7();
 
 		list.addNode(56);
 		list.addNode(30);
@@ -83,10 +81,13 @@ public class DeleteLastUC6 {
 
 		list.display();
 
-		list.DeletLastNode();
-
-		System.out.println("After Delete of the list");
-		list.display();
+		
+         
+		if (list.search(list.head, 30))
+            System.out.println("Yes");
+        else
+            System.out.println("No");
 	}
 
+	
 }

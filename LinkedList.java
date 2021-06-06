@@ -1,6 +1,6 @@
 package com.practiceProgram;
 
-public class AfterInsertUC8 {
+public class LinkedListUC9 {
 
 	public Node head = null;
 	public Node tail = null;
@@ -9,7 +9,7 @@ public class AfterInsertUC8 {
 		int data;
 		Node next;
 
-		 Node(int data) {
+		Node(int data) {
 			this.data = data;
 			this.next = null;
 		}
@@ -46,18 +46,29 @@ public class AfterInsertUC8 {
 
 		}
 	}
-	
-	public void insertAfter(Node prev_node, int data) {
-		if (head == null) {
-			System.out.println("The given node previous can't null");
-		return;
+
+	void deleteKey(int key)
+	{
+
+		Node temp = head;
+		Node prev = null;
+
+
+		while (temp != null && temp.data != key)
+		{
+			prev = temp;
+			temp = temp.next;
 		}
-		Node newNode= new Node (data);
-		newNode.next = prev_node.next;
-		prev_node.next = newNode;
-		
+
+		if (temp == null)
+			return;
+
+		prev.next = temp.next;
+
+		temp = prev.next;
 	}
-	
+
+
 	public void display() {
 		Node tempNode = head;
 		Node current = head;
@@ -75,14 +86,14 @@ public class AfterInsertUC8 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		AfterInsertUC8 list = new AfterInsertUC8();
+		LinkedListUC9 list = new LinkedListUC9();
 
 		list.addNode(56);
 		list.addNode(30);
+		list.addNode(40);
 		list.addNode(70);
 
-		list.insertAfter(list.head.next,40);
-		
+		list.deleteKey(40);
 		list.display();
 	}
 }

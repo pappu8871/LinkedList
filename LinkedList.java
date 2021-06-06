@@ -1,8 +1,9 @@
 package com.practiceProgram;
 
-public class LinkedListUC9 {
+public class LinkedListUC10 {
 
-	public Node head = null;
+	public static Node new_node;
+	public static Node head = null;
 	public Node tail = null;
 
 	class Node {
@@ -32,68 +33,64 @@ public class LinkedListUC9 {
 
 	}
 
+	 void sortedInsert(Node new_node)
+	    {
+	        Node current;
 
-	public void addNode(int data) {
-		Node newNode= new Node (data);
+	        if (head == null || head.data >= new_node.data) {
+	            new_node.next = head;
+	            head = new_node;
+	        }
+	        else {
+	
+	            current = head;
+	 
+	            while (current.next != null && current.next.data < new_node.data)
+	                current = current.next;
+	 
+	            new_node.next = current.next;
+	            current.next = new_node;
+	        }
+	    }
 
-		if(head == null) {
-			head = newNode;
-			tail = newNode;
+	    Node newNode(int data)
+	    {
+	        Node x = new Node(data);
+	        return x;
+	    }
+	
+	 public void display() {
+			Node tempNode = head;
+			Node current = head;
+			if(head == null) {
+				System.out.println("List is Empty");
+				return;
+			}
+//			System.out.println("Singly LinkedList of Node");
+			while(current != null) {
+				System.out.print(current.data + " ");
+				current = current.next;
+			}
+			System.out.println();
 		}
-		else {
-			tail.next = newNode;
-			tail = newNode;
-
-		}
-	}
-
-	void deleteKey(int key)
-	{
-
-		Node temp = head;
-		Node prev = null;
-
-
-		while (temp != null && temp.data != key)
-		{
-			prev = temp;
-			temp = temp.next;
-		}
-
-		if (temp == null)
-			return;
-
-		prev.next = temp.next;
-
-		temp = prev.next;
-	}
-
-
-	public void display() {
-		Node tempNode = head;
-		Node current = head;
-		if(head == null) {
-			System.out.println("List is Empty");
-			return;
-		}
-		System.out.println("Singly LinkedList of Node");
-		while(current != null) {
-			System.out.print(current.data + " ");
-			current = current.next;
-		}
-		System.out.println();
-	}
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		LinkedListUC9 list = new LinkedListUC9();
-
-		list.addNode(56);
-		list.addNode(30);
-		list.addNode(40);
-		list.addNode(70);
-
-		list.deleteKey(40);
-		list.display();
-	}
+	 
+	 public static void main(String[] args) {
+			// TODO Auto-generated method stub
+			LinkedListUC10 list = new LinkedListUC10();
+			
+				
+				
+		        new_node = list.newNode(56);
+		        list.sortedInsert(new_node);
+		        new_node = list.newNode(30);
+		        list.sortedInsert(new_node);
+		        new_node = list.newNode(40);
+		        list.sortedInsert(new_node);
+		        new_node = list.newNode(70);
+		        list.sortedInsert(new_node);
+		        
+		        System.out.println("Sorted Linked List");
+		        list.display();
+	 }
+ 
 }

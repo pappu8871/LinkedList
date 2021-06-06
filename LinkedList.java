@@ -1,13 +1,13 @@
 package com.practiceProgram;
 
-public class LinkedListUC2 {
+public class LinkedListUC3 {
 	public Node head = null;
 	public Node tail = null;
-
+	
 	class Node {
 		int data;
 		Node next;
-
+		
 		public Node(int data) {
 			this.data = data;
 			this.next = null;
@@ -28,36 +28,43 @@ public class LinkedListUC2 {
 		public void setNext(Node next) {
 			this.next = next;
 		}
+
 	}
 
+	
+//	public void addNode(int data) {
+//		Node newNode= new Node (data);
+//
+//		if(head == null) {
+//			head = newNode;
+//			tail = newNode;
+//		}
+//		else {
+//			tail.next = newNode;
+//			tail = newNode;
+//			
+//		}
+//	}
+		
 
-	public void addNode(int data) {
+
+	public void appened (int data) {
 		Node newNode= new Node (data);
-		//
-		//		if(head == null) {
-		//			head = newNode;
-		//			tail = newNode;
-		//		}
-		//		else {
-		//			tail.next = newNode;
-		//			tail = newNode;
-		//			
-		//		}
-
-		if(this.tail == null) {
-			this.tail = newNode;
-		}
-		if(this.head == null) {
+		if (this.head == null ||this.tail == null ) {
 			this.head = newNode;
-
-		} else {
-			Node tempNode = this.head;
-			this.head =newNode;
-			this.head.setNext(tempNode);
+			this.tail =newNode;
 		}
-
+//		if (this.tail == null) {
+//			this.tail =newNode;
+//		}
+		else {
+			this.tail.setNext(newNode);
+			this.tail = newNode;
+			
+		}
 	}
-
+	
+	
 	public void display() {
 		Node tempNode = head;
 		Node current = head;
@@ -71,18 +78,16 @@ public class LinkedListUC2 {
 			current = current.next;
 		}
 		System.out.println();
-	}
-
+		}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		LinkedListUC2 list = new LinkedListUC2();
-
-		list.addNode(70);
-		list.addNode(30);
-		list.addNode(56);
-
+		LinkedListUC3 list = new LinkedListUC3();
+		
+		list.appened(56);
+		list.appened(30);
+		list.appened(70);
+	
 		list.display();
 	}
 }
-
-

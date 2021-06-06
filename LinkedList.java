@@ -1,8 +1,8 @@
 package com.practiceProgram;
 
-public class DeletFirstUC5 {
+public class DeleteLastUC6 {
 
-	public static Node head = null;
+	public  Node head = null;
 	public Node tail = null;
 
 	class Node {
@@ -29,7 +29,6 @@ public class DeletFirstUC5 {
 		public void setNext(Node next) {
 			this.next = next;
 		}
-
 	}
 
 
@@ -47,30 +46,17 @@ public class DeletFirstUC5 {
 		}
 	}
 
-	public Node DeletFirstNode() {
-		if (head == null)
-			return head;
-		Node temp = head ;
-		head = head.next;
-		return head;
+	public Node DeletLastNode() {
+		if (head == null || head.next == null) {
+		return null;
 	}
-
-	//	public void appened (int data) {
-	//		Node newNode= new Node (data);
-	//		if (this.head == null ||this.tail == null ) {
-	//			this.head = newNode;
-	//			this.tail =newNode;
-	//		}
-	////		if (this.tail == null) {
-	////			this.tail =newNode;
-	////		}
-	//		else {
-	//			this.tail.setNext(newNode);
-	//			this.tail = newNode;
-	//			
-	//		}
-	//	}
-
+		Node secondlast = head;
+		while (secondlast.next.next != null) 
+			secondlast = secondlast.next;
+			secondlast.next = null;
+			return head;
+		}
+	
 
 	public void display() {
 		Node tempNode = head;
@@ -89,7 +75,7 @@ public class DeletFirstUC5 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		DeletFirstUC5 list = new DeletFirstUC5();
+		DeleteLastUC6 list = new DeleteLastUC6();
 
 		list.addNode(56);
 		list.addNode(30);
@@ -97,8 +83,8 @@ public class DeletFirstUC5 {
 
 		list.display();
 
-		list.DeletFirstNode();
-	
+		list.DeletLastNode();
+
 		System.out.println("After Delete of the list");
 		list.display();
 	}
